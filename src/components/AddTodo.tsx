@@ -1,17 +1,17 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { addTodo } from '../features/todos/todoSlice'
-import { AppDispatch } from '../app/store'
+import { addTodo } from '../features/todoSlice'
+import type { AppDispatch } from '../app/store'
 
 const AddTodo: React.FC = () => {
-  const [text, setText] = useState('') // local state for the input text
-  const dispatch = useDispatch<AppDispatch>() // hook to dispatch actions
+  const [text, setText] = useState('') // Local state for input field
+  const dispatch = useDispatch<AppDispatch>() // Typed dispatch from Redux store
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
     if (text.trim()) {
-      dispatch(addTodo(text)) // dispatch the addTodo action
-      setText('') // reset the input field
+      dispatch(addTodo(text)) // Dispatch the action to add a new todo
+      setText('') // Clear the input after submission
     }
   }
 
